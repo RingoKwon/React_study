@@ -14,8 +14,7 @@ function App() {
   return (
     <>
       <Hello name='react'color ='red' />
-      <div style={style}>{name}</div>
-      <div className='gray-box'></div>
+      <Hello color ='pink' />
     </>
   );
 }
