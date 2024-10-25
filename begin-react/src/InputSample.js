@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function InputSample() {
   const [inputs, setInputs] = useState({
     name: "",
     nickname: "",
   });
+  const nameInput = useRef();
   const { name, nickname } = inputs;
 
   const onChange = (e) => {
@@ -13,24 +14,37 @@ function InputSample() {
       ...inputs,
       [name]: value, // name[name, nickname] 키를 가진 값을 value로 설정 overwrite
     });
+
   };
   const onReset = () => {
     setInputs({
       name: "",
       nickname: "",
     });
+    nameInput.current.focus();
   };
   return (
     <div>
       <div>
-        <input placeholder="이름" value={name} onChange={onChange} />
-        <input placeholder="전화번호" value={nickname} onChange={onChange} />
-        <button onClick={onReset}>초기화</button>
+        <input
+          name="name"
+          placeholder="이름"
+          value={name}
+          onChange={onChange}
+          ref={nameInput}
+        />
+        <input
+          name="nickname"
+          placeholder="닉네임"
+          value={nickname}
+          onChange={onChange}
 
+        />
+        <button onClick={onReset}>초기화</button>
       </div>
       <div>
         <b>값: </b>
-        이름(닉네임)
+        {name} ({nickname})
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
-import React from 'react';
-import InputSample from './InputSample';
+import React from "react";
+import InputSample from "./InputSample";
 
 function App() {
-
-
   return (
-    <InputSample />
+    <div>
+      <h1>인풋 샘플</h1>
+      <InputSample />
+    </div>
   );
 }
 
