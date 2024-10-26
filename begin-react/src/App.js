@@ -41,7 +41,6 @@ function App() {
   ]);
   const nextId = useRef(4);
 
-
   const onCreate = () => {
     // 나중에 구현할 때 로직 추가
     const user = {
@@ -60,6 +59,13 @@ function App() {
   const onRemove = (id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
+  const onToggle = (id) => {
+    setUsers(
+      users.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user
+      )
+    );
+  };
 
   return (
     <>
@@ -69,7 +75,7 @@ function App() {
         onChange={onChange}
         onCreate={onCreate}
       />
-      <UserList users={users} onRemove={onRemove} />
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
     </>
   );
 }
